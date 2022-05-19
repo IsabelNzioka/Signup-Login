@@ -1,0 +1,60 @@
+/* .Button {
+  color: red;
+}
+
+.Button:first-of-type {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.Button:disabled {
+  color: black;
+  cursor: not-allowed;
+}
+
+.Signin {
+  color: #cf2f2f;
+  background-color: #cf2f2f;
+}
+
+.Signup {
+  color: rgb(87, 11, 11);
+}
+ */
+
+.Button {
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  width: 20%;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  font: 1.2rem;
+  padding: 10px;
+  margin: 15px;
+  font-weight: bold;
+}
+
+/* .Button:first-of-type {
+  margin-left: 0;
+  padding-left: 0;
+} */
+
+.Button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.Signin-signup {
+  background-color: #cf2f2f;
+  color: #fff;
+}
+
+.Switch {
+  background-color: #e69898;
+  color: #fff;
+}
+.Switch:hover {
+  background-color: #cf2f2f;
+}

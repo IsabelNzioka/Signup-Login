@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+.Input {
+  width: 100%;
+  padding: 8px;
+}
+
+/* .Label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+} */
+
+.InputElement {
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  /* background-color: #ecd69a; */
+  font: 100px;
+  padding: 6px 10px;
+  display: block;
+  width: 60%;
+  box-sizing: border-box;
+  color: hsl(30, 17%, 2%);
+  transition: all 0.3s ease-in;
+  height: 40px;
+}
+.InputElement:hover {
+  box-shadow: 0 0 0 0.4px #c0900b;
+  border: 1px solid #888783;
+}
+
+.InputElement:focus {
+  outline: none;
+  /* background-color: #ebe7e7; */
+  /* border: 2px solid #c0900b; */
+  border: 1px solid #c0900b;
+  box-shadow: 0 0 0 0.4px #c0900b;
+}
+
+.InputElement .Invalid {
+  border: 1px solid red;
+  background-color: #fda49a;
+}
+
+.LabelText {
+  color: #1b1a17;
+  font-size: 0.8rem;
+  font-weight: 700;
+  /* display: block; */
+  margin-bottom: -10px;
+}

@@ -12,19 +12,19 @@
 *::after {
   box-sizing: inherit;
 } */
-/* 
+
 body {
   /* box-sizing: border-box; */
-/* font-size: 14px;
+  font-size: 14px;
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   line-height: 1.6;
   /* color: #312929; */
 
-/* min-height: 100vh; */
-/* } */
+  min-height: 100vh;
+}
 
-/* .Sidebars {
+.Sidebars {
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -32,7 +32,7 @@ body {
 }
 
 .Left {
-  background-image: url("./img/prose-8.jpg");
+  background-image: url("../../img/prose-8.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -47,26 +47,26 @@ body {
 
 .Right {
   /* background-color: rgb(235, 145, 36); */
-/* width: 100%;
+  width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   /* flex-grow: 0; */
-/* }
+}
 
-.Right-auth-form {
+.RightAuthForm {
   /* display: flex; */
-/* flex-grow: 0;
-  justify-content: center; */
+  flex-grow: 0;
+  justify-content: center;
 
-/* justify-content: flex-end; */
-/* height: 40%; */
-/* background-color: hsl(0, 7%, 51%); */
-/* }  */
+  /* justify-content: flex-end; */
+  height: 40%;
+  /* background-color: hsl(0, 7%, 51%); */
+}
 
-/* .nav {
+.Nav {
   display: flex;
   font-size: 2rem;
   flex-grow: 0;
@@ -74,24 +74,25 @@ body {
   padding: 30px 30px 0;
   color: #cf2f2f;
 }
-.nav a {
+.Nav a {
   text-decoration: none;
   margin-left: 4px;
   color: #cf2f2f;
 }
 
-.copyright {
+.Copyright {
   margin-left: -3rem;
-} */
+}
 
-/* .logo {
+.Logo {
   font-family: "Oswald", sans-serif;
   padding: 30px 0 0 30px;
   font-weight: 700;
-  font-size: 2rem; */
-/* line-height: 2; */
-/* letter-spacing: 3px; */
-/* }
-.highlight {
+  font-size: 2rem;
+  /* color: #fff; */
+  /* line-height: 2; */
+  letter-spacing: 3px;
+}
+.Highlight {
   color: #cf2f2f;
-}  */
+}
