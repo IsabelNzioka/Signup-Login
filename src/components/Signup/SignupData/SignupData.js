@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 import classes from "./SignupData.module.css";
 
@@ -60,13 +60,16 @@ const SignupData = (props) => {
       value: "",
       validation: {
         required: true,
+        minLength: 6,
       },
       valid: false,
       touched: false,
     },
+    // isSignup: true,
   });
 
   const [signup] = useState(true);
+  const [isSignup] = useState(true);
 
   const checkValidity = (value, rules) => {
     let isValid = true;
@@ -99,7 +102,7 @@ const SignupData = (props) => {
   };
 
   const inputChangedHandler = (event, controlName) => {
-    const updatedLogin = {
+    const updatedSignup = {
       ...signupForm,
       [controlName]: {
         ...signupForm[controlName],
@@ -111,24 +114,13 @@ const SignupData = (props) => {
         touched: true,
       },
     };
-    setSignupForm(updatedLogin);
+    setSignupForm(updatedSignup);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onAuth(
-      signupForm.email.value,
-      signupForm.password.value,
-      signup.isSignup
-    );
+    props.onAuth(signupForm.email.value, signupForm.password.value, isSignup);
   };
-
-  //   const switchAuthHandler = () => {
-  //     setSignupForm((prevState) => ({
-  //       ...prevState,
-  //       isSignup: !prevState.isSignup,
-  //     }));
-  //   };
 
   const formElemArray = [];
   for (let key in signupForm) {
@@ -141,6 +133,10 @@ const SignupData = (props) => {
   let navigate = useNavigate();
 
   const signinBtn = () => {
+    setSignupForm((prevState) => ({
+      ...prevState,
+      isSignup: !prevState.isSignup,
+    }));
     navigate("/");
   };
 

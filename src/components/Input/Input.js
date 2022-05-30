@@ -39,7 +39,7 @@ const input = (props) => {
       inputElement = { ...props.elementConfig.type }(
         <input
           className={inputClasses.join(" ")}
-          //   {...props.elementConfig}
+          {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
         />
@@ -49,7 +49,7 @@ const input = (props) => {
       inputElement = (
         <input
           className={inputClasses.join(" ")}
-          //   {...props.elementConfig}
+          {...props.elementConfig}
           value={props.value}
         />
       );
@@ -58,7 +58,7 @@ const input = (props) => {
       inputElement = (
         <input
           className={inputClasses.join(" ")}
-          //   {...props.elementConfig}
+          {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
         />

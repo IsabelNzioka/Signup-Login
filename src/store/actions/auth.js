@@ -39,15 +39,19 @@ export const auth = (email, password, isSignup) => {
       returnSecureToken: true,
     };
     let url =
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key= AIzaSyB9nTBwOQGOyWcrcD4QeJHwFy3v2G9f0mo";
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC1-G2GD7mvxtnkCKz7NdWNvcr4ftcYrio";
+
+    //   "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1-G2GD7mvxtnkCKz7NdWNvcr4ftcYrio";
+
     if (!isSignup) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB9nTBwOQGOyWcrcD4QeJHwFy3v2G9f0mo";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1-G2GD7mvxtnkCKz7NdWNvcr4ftcYrio";
     }
+
     axios
       .post(url, authData)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         const expirationDate = new Date(
           new Date().getTime() + response.data.expiresIn * 1000
         );
@@ -57,6 +61,7 @@ export const auth = (email, password, isSignup) => {
         dispatch(authSuccess(response.data.idToken, response.data.localId));
       })
       .catch((err) => {
+        console.log(err);
         dispatch(authFail(err.response.data.error));
       });
   };
@@ -73,11 +78,11 @@ export const authCheckState = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
     if (!token) {
-      dispatch(console.log("There is no token")); //////////////////
+      console.log("There is no token"); //////////////////
     } else {
       const expirationDate = new Date(localStorage.getItem("expirationDate"));
       if (expirationDate <= new Date()) {
-        dispatch(console.log("...........Logout"));
+        console.log("...........Logout");
       } else {
         const userId = localStorage.getItem("userId");
         dispatch(authSuccess(token, userId));
@@ -85,3 +90,5 @@ export const authCheckState = () => {
     }
   };
 };
+
+//AIzaSyC1-G2GD7mvxtnkCKz7NdWNvcr4ftcYrio

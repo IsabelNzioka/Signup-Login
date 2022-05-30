@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router";
 
 import classes from "./LoginData.module.css";
@@ -6,17 +7,20 @@ import classes from "./LoginData.module.css";
 import Input from "../../Input/Input";
 import Button from "../../UI/Button/Button";
 
-const LoginData = () => {
-  const [loginForm] = useState({
-    username: {
+import * as actions from "../../../store/actions/auth";
+
+const LoginData = (props) => {
+  const [loginForm, setLoginForm] = useState({
+    email: {
       elementType: "input",
       elementConfig: {
-        type: "text",
-        placeholder: "Enter your username",
+        type: "email",
+        placeholder: "Enter your E-mail",
       },
       value: "",
       validation: {
         required: true,
+        isEmail: true,
       },
       valid: false,
       touched: false,
@@ -30,26 +34,67 @@ const LoginData = () => {
       value: "",
       validation: {
         required: true,
+        minLength: 6,
       },
       valid: false,
       touched: false,
     },
-    // email: {
-    //   elementType: "input",
-    //   elementConfig: {
-    //     type: "email",
-    //     placeholder: "Enter your E-mail",
-    //   },
-    //   value: "",
-    //   validation: {
-    //     required: true,
-    //   },
-    //   valid: false,
-    //   touched: false,
-    // },
+    // isSignup: true,
   });
 
-  const [login] = useState(true);
+  const [signup] = useState(true);
+  const [isSignup] = useState(!true);
+
+  const checkValidity = (value, rules) => {
+    let isValid = true;
+
+    if (!rules) {
+      return true;
+    }
+    if (rules.required) {
+      isValid = value.trim() !== "" && isValid;
+    }
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength && isValid;
+    }
+    if (rules.maxLength) {
+      isValid = value.length <= rules.maxLength && isValid;
+    }
+
+    if (rules.isEmail) {
+      const pattern =
+        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      isValid = pattern.test(value) && isValid;
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid;
+    }
+
+    return isValid;
+  };
+
+  const inputChangedHandler = (event, controlName) => {
+    const updateLogin = {
+      ...loginForm,
+      [controlName]: {
+        ...loginForm[controlName],
+        value: event.target.value,
+        valid: checkValidity(
+          event.target.value,
+          loginForm[controlName].validation
+        ),
+        touched: true,
+      },
+    };
+    setLoginForm(updateLogin);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    props.onAuth(loginForm.email.value, loginForm.password.value, isSignup);
+  };
 
   const formElemArray = [];
   for (let key in loginForm) {
@@ -60,30 +105,64 @@ const LoginData = () => {
   }
 
   let navigate = useNavigate();
-  const btnsignup = () => {
+
+  const btn = () => {
+    if (!props.error) {
+      navigate("/signup");
+    }
+  };
+
+  const signupBtn = () => {
     navigate("/signup");
   };
 
+  let errorMessage = null;
+  if (props.error) {
+    errorMessage = <p>{props.error.message}</p>;
+  }
+
   return (
     <div className={classes.Login}>
-      <h1> Sign In to Prose Beauty</h1>
-      <form>
+      <h1> Sign Up to Prose Beauty</h1>
+      {/* {authRedirect} */}
+      {errorMessage}
+
+      <form onSubmit={submitHandler}>
         {formElemArray.map((formElement) => (
           <Input
             key={formElement.id}
             elementConfig={formElement.config.elementConfig}
             value={formElement.config.value}
-            login={login}
+            invalid={!formElement.config.valid}
+            shouldValidate={formElement.config.validation}
+            touched={formElement.config.touched}
+            changed={(event) => inputChangedHandler(event, formElement.id)}
+            signup={signup}
           />
         ))}
-        <Button btnType="Signin-signup">Sign In</Button>
+        <Button btnType="Signin-signup" clicked={btn}>
+          Sign in
+        </Button>
         or
-        <Button btnType="Switch" clicked={btnsignup}>
-          Sign Up
+        <Button btnType="Switch" clicked={signupBtn}>
+          Sign up
         </Button>
       </form>
     </div>
   );
 };
 
-export default LoginData;
+const mapStateToProps = (state) => {
+  return {
+    error: state.auth.error,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password, isSignup) =>
+      dispatch(actions.auth(email, password, isSignup)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginData);
