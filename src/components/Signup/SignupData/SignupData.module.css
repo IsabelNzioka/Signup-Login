@@ -3,3 +3,12 @@
   margin-left: 10%;
   margin-top: -10%;
 }
+
+@media (max-width: 551px) {
+  .Signup {
+    margin-top: -32%;
+  }
+  .Heading {
+    font-size: 1.4rem;
+  }
+}

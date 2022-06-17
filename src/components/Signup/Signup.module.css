@@ -24,6 +24,24 @@ body {
   min-height: 100vh;
 }
 
+/* @media (max-width: 501px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1000px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 301px) {
+  body {
+    font-size: 0.8rem;
+  }
+} */
+
 .Sidebars {
   display: flex;
   flex-direction: row;
@@ -56,6 +74,12 @@ body {
   /* flex-grow: 0; */
 }
 
+@media (max-width: 501px) {
+  .Left {
+    width: 35%;
+  }
+}
+
 .RightAuthForm {
   /* display: flex; */
   flex-grow: 0;
@@ -83,6 +107,25 @@ body {
 .Copyright {
   margin-left: -3rem;
 }
+
+@media (max-width: 551px) {
+  .Copyright {
+    margin-left: -7rem;
+    margin-top: 2rem;
+  }
+}
+
+/* @media (max-width: 1000px) {
+  .Copyright {
+    margin-left: -13rem;
+  }
+}
+@media (max-width: 500px) {
+  .Copyright {
+    margin-left: -7rem;
+    font-size: 0.6rem;
+  }
+} */
 
 .Logo {
   font-family: "Oswald", sans-serif;

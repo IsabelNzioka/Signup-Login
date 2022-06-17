@@ -15,7 +15,7 @@ const LoginData = (props) => {
       elementType: "input",
       elementConfig: {
         type: "email",
-        placeholder: "Enter your E-mail",
+        placeholder: " E-mail",
       },
       value: "",
       validation: {
@@ -29,7 +29,7 @@ const LoginData = (props) => {
       elementType: "input",
       elementConfig: {
         type: "password",
-        placeholder: "Enter your password",
+        placeholder: " password",
       },
       value: "",
       validation: {
@@ -106,9 +106,9 @@ const LoginData = (props) => {
 
   let navigate = useNavigate();
 
-  const btn = () => {
+  let SigninSuccess = () => {
     if (!props.error) {
-      navigate("/signup");
+      navigate("/success");
     }
   };
 
@@ -123,7 +123,7 @@ const LoginData = (props) => {
 
   return (
     <div className={classes.Login}>
-      <h1> Sign Up to Prose Beauty</h1>
+      <h1> Sign in to Prose Beauty</h1>
       {/* {authRedirect} */}
       {errorMessage}
 
@@ -140,10 +140,9 @@ const LoginData = (props) => {
             signup={signup}
           />
         ))}
-        <Button btnType="Signin-signup" clicked={btn}>
+        <Button btnType="Signin-signup" clicked={SigninSuccess}>
           Sign in
         </Button>
-        or
         <Button btnType="Switch" clicked={signupBtn}>
           Sign up
         </Button>

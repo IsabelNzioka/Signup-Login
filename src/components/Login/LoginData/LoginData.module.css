@@ -1,3 +1,9 @@
 .Login {
   margin-left: 10%;
 }
+
+@media (max-width: 551px) {
+  .Login {
+    margin-top: -1.2rem;
+  }
+}

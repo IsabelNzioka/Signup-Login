@@ -58,3 +58,20 @@
 .Switch:hover {
   background-color: #cf2f2f;
 }
+
+@media (max-width: 551px) {
+  .Switch,
+  .Signin-signup {
+    width: 25%;
+    font-size: 0.6rem;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 900px) {
+  .Switch,
+  .Signin-signup {
+    width: 32%;
+    font-size: 1.2rem;
+  }
+}

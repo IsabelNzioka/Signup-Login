@@ -15,7 +15,7 @@ const SignupData = (props) => {
       elementType: "input",
       elementConfig: {
         type: "text",
-        placeholder: "Enter your first Name",
+        placeholder: "first Name",
       },
       value: "",
       validation: {
@@ -28,7 +28,7 @@ const SignupData = (props) => {
       elementType: "input",
       elementConfig: {
         type: "text",
-        placeholder: "Enter your last Name",
+        placeholder: "last Name",
       },
       value: "",
       validation: {
@@ -41,7 +41,7 @@ const SignupData = (props) => {
       elementType: "input",
       elementConfig: {
         type: "email",
-        placeholder: "Enter your E-mail",
+        placeholder: "E-mail",
       },
       value: "",
       validation: {
@@ -55,7 +55,7 @@ const SignupData = (props) => {
       elementType: "input",
       elementConfig: {
         type: "password",
-        placeholder: "Enter your password",
+        placeholder: "password",
       },
       value: "",
       validation: {
@@ -140,6 +140,12 @@ const SignupData = (props) => {
     navigate("/");
   };
 
+  let SignupSuccess = () => {
+    if (!props.error) {
+      navigate("/success");
+    }
+  };
+
   let errorMessage = null;
   if (props.error) {
     errorMessage = <p>{props.error.message}</p>;
@@ -151,7 +157,7 @@ const SignupData = (props) => {
   //   }
   return (
     <div className={classes.Signup}>
-      <h1> Sign Up to Prose Beauty</h1>
+      <h1 className={classes.Heading}> Sign Up to Prose Beauty</h1>
       {/* {authRedirect} */}
       {errorMessage}
 
@@ -168,7 +174,9 @@ const SignupData = (props) => {
             signup={signup}
           />
         ))}
-        <Button btnType="Signin-signup">Sign up</Button>
+        <Button btnType="Signin-signup" clicked={SignupSuccess}>
+          Sign up
+        </Button>
         or
         <Button btnType="Switch" clicked={signinBtn}>
           Sign in

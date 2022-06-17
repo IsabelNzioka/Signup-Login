@@ -15,7 +15,7 @@
   outline: none;
   border: 1px solid #ccc;
   border-radius: 10px;
-  /* background-color: #ecd69a; */
+
   font: 100px;
   padding: 6px 10px;
   display: block;
@@ -45,8 +45,42 @@
 
 .LabelText {
   color: #1b1a17;
+  /* color: #f0e6ca; */
   font-size: 0.8rem;
   font-weight: 700;
   /* display: block; */
   margin-bottom: -10px;
 }
+
+@media (max-width: 551px) {
+  .Input {
+    /* background-color: #c0900b; */
+    padding: 4px;
+  }
+  .Switch,
+  .Signin-signup {
+    width: 25%;
+    font-size: 0.6rem;
+    display: inline-block;
+  }
+  .InputElement {
+    width: 70%;
+    height: 35%;
+  }
+
+  .LabelText {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 413px) {
+  .LabelText {
+    font-size: 1rem;
+  }
+}
+
+/* @media (min-width: 1000px) {
+  .LabelText {
+    font-size: 1rem;
+  }
+} */
